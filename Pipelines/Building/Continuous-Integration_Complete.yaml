@@ -45,7 +45,7 @@ jobs:
           command: test
           projects: $(TestsPath)
           arguments: "--configuration --configuration $(BuildConfiguration)"
-      - task: mspremier.BuildQualityChecks.QualityChecks-task.BuildQualityChecks@8
+      - task: mspremier.BuildQualityChecks.QualityChecks-task.BuildQualityChecks@10
         displayName: 'Check build quality'
         inputs:
           checkCoverage: true
