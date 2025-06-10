@@ -17,7 +17,7 @@ jobs:
     displayName: "Build and test"
     pool:
       name: Azure Pipelines
-      vmImage: ubuntu-latest
+      vmImage: windows-latest
     steps:
       - task: DotNetCoreCLI@2
         displayName: "Restore"
@@ -33,12 +33,12 @@ jobs:
         inputs:
           projects: '$(SourcesPath)'
           arguments: '/p:TreatWarningsAsErrors="true" --configuration $(BuildConfiguration)'
-      - task: Docker@2
-        displayName: "Start SQL Server Container"
-        inputs:
-          containerRegistry: DockerHub
-          command: run
-          arguments: '-e "ACCEPT_EULA=Y" -e "SA_PASSWORD=sTronkpassword54322!" -p 1437:1433 --name SQLServer2017 -d mcr.microsoft.com/mssql/server:2017-latest'
+      # - task: Docker@2
+      #   displayName: "Start SQL Server Container"
+      #   inputs:
+      #     containerRegistry: DockerHub
+      #     command: run
+      #     arguments: '-e "ACCEPT_EULA=Y" -e "SA_PASSWORD=sTronkpassword54322!" -p 1437:1433 --name SQLServer2017 -d mcr.microsoft.com/mssql/server:2017-latest'
       - task: DotNetCoreCLI@2
         displayName: Run Tests
         inputs:
