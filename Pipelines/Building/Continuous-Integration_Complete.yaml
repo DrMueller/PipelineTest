@@ -17,7 +17,7 @@ jobs:
     displayName: "Build and test"
     pool:
       name: Azure Pipelines
-      vmImage: ubuntu-latest
+      vmImage: windows-latest
     steps:
       - task: DotNetCoreCLI@2
         displayName: "Restore"
